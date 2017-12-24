@@ -3,9 +3,11 @@
 目前公司在测试GITLAB
 ---测试修改
 
-2017.12.24
-==========
-测试Markdown语法
-----------
+# 2017.12.24
+## 测试Markdown语法
 * 1.列表1
 + 2.列表2
+<pre><code>
+ls -l
+cat /etc/centos-release
+</code></pre>
