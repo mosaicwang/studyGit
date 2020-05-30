@@ -7,7 +7,7 @@ node {
     checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]			
     
     stage "编译后端"
-    sh "cd /home/zznode/project_src/demo-oss4-oms-vue/oss4-oms/"
+    sh "cd /home/boco/jenkins/workspace/demo1"
     sh "mvn clean package"
 
 }
