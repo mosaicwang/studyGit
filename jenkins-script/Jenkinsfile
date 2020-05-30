@@ -8,11 +8,10 @@ pipeline {
 	stages {
 		stage('Build'){
 			/* 
-			定义环境变量:
-			
+			定义环境变量:			
 			*/
 			environment { 
-      	M2_HOME=/home/boco/apache-maven-3.6.3      	
+      	M2_HOME = "/home/boco/apache-maven-3.6.3"
       }
 			steps{
 				echo "拉取代码"
