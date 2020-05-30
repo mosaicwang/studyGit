@@ -12,14 +12,15 @@ pipeline {
 			*/
 			environment { 
       	M2_HOME = "/home/boco/apache-maven-3.6.3"
+      	BACKEND_HOME= "/home/boco/jenkins/workspace/demo1/oss4-oms"
       }
 			steps{
 				echo "拉取代码"
 				checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]					
 				
-				echo "项目位置:${env.$WORKSPACE}"
+				echo "项目位置:${env.$WORKSPACE},构建号:${env.BUILD_NUMBER},项目名称:${env.JOB_NAME}"
 				echo "编译后端"
-				sh "cd /home/boco/jenkins/workspace/demo1"
+				sh "cd ${BACKEND_HOME}"
     		sh "${M2_HOME}/bin/mvn clean package"
 			}
 		}
