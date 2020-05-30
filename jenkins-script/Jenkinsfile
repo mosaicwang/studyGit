@@ -1,5 +1,8 @@
 
-# 声明式流水线
+/*
+声明式流水线
+*/
+
 pipeline {
 	agent any
 	stages {
