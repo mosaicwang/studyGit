@@ -2,4 +2,14 @@
 
 node {
     echo "hello world from script"
+    
+    stages{
+    	stage('Build') {
+    		steps {
+    			echo "À­È¡´úÂë"
+    			checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]			
+    		}
+    	}
+    
+    }
 }
