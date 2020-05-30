@@ -6,7 +6,7 @@ node {
     stages{
     	stage('Build') {
     		steps {
-    			echo "À­È¡´úÂë"
+    			echo "æ‹‰å–ä»£ç "
     			checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]			
     		}
     	}
