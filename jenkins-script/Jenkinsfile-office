@@ -31,6 +31,8 @@ pipeline {
     		sh "cd ${MYWORKSPACE_HOME}/${PRJ_FRONTEND_DIR}"
     		sh "npm install"
     		sh "npm run build:prod"
+    		
+    		echo "编译完成"
 			}
 		}
 	}
