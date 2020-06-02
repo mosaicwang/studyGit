@@ -11,8 +11,8 @@ pipeline {
 			定义环境变量:			
 			*/
 			environment { 
-      	M2_HOME = "/home/boco/apache-maven-3.6.3"
-      	BACKEND_HOME= "/home/boco/jenkins/workspace/demo1/oss4-oms"
+      	M2_HOME = "/home/zznode/daiwei_project/sw/apache-maven-3.6.3"
+      	MYWORKSPACE_HOME= "/home/zznode/jenkins_data/workspace"
       }
 			steps{
 				echo "拉取代码"
@@ -23,7 +23,7 @@ pipeline {
 				
 				echo "项目位置:${env.$WORKSPACE},构建号:${env.BUILD_NUMBER},项目名称:${env.JOB_NAME}"
 				echo "编译后端"
-				sh "cd ${BACKEND_HOME}"
+				sh "cd ${MYWORKSPACE_HOME}/${env.JOB_NAME}"
     		sh "${M2_HOME}/bin/mvn clean package"
 			}
 		}
