@@ -15,6 +15,7 @@ pipeline {
       	MYWORKSPACE_HOME= "/home/zznode/jenkins_data/workspace"
       	PRJ_BACKEND_DIR="oss4-oms"
       	PRJ_FRONTEND_DIR="oss4-oms-ui"
+      	NODE_HOME="/home/zznode/daiwei_project/sw/node-v12.16.3-linux-x64"
       }
 			steps{
 				echo "拉取代码"
@@ -29,8 +30,8 @@ pipeline {
     		
     		echo "编译前端"
     		sh "cd ${MYWORKSPACE_HOME}/${env.JOB_NAME}/${PRJ_FRONTEND_DIR}"
-    		sh "npm install"
-    		sh "npm run build:prod"
+    		sh "${NODE_HOME}/bin/npm install"
+    		sh "${NODE_HOME}/bin/npm run build:prod"
     		
     		echo "编译完成1"
 			}
