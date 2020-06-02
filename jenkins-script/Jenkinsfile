@@ -25,7 +25,7 @@ pipeline {
 				echo "项目位置:${env.$WORKSPACE},构建号:${env.BUILD_NUMBER},项目名称:${env.JOB_NAME}"
 				echo "编译后端"
 				dir('oss4-oms') {
-    			// sh "${M2_HOME}/bin/mvn clean package"
+    			sh "${M2_HOME}/bin/mvn clean package"
     		}	// end dir('oss4-oms')
 
 				echo "编译前端"
