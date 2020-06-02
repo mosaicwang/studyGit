@@ -7,26 +7,36 @@ pipeline {
 	agent any
 	stages {
 		stage('Build'){
-			/* 
-			定义环境变量:			
+			/*
+			定义环境变量:
 			*/
-			environment { 
+			environment {
       	M2_HOME = "/home/boco/apache-maven-3.6.3"
       	BACKEND_HOME= "/home/boco/jenkins/workspace/demo1/oss4-oms"
+      	NODE_HOME="/home/boco/node-v12.16.3-linux-x64"
       }
 			steps{
 				echo "拉取代码"
-								
-				checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]					
-				
-								
-				
+
+				checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]
+
+
+
 				echo "项目位置:${env.$WORKSPACE},构建号:${env.BUILD_NUMBER},项目名称:${env.JOB_NAME}"
 				echo "编译后端"
-				dir('oss4-oms') {    			
+				dir('oss4-oms') {
     			sh "${M2_HOME}/bin/mvn clean package"
-    		}				
-			}
-		}
+    		}	// end dir('oss4-oms')
+
+				echo "编译前端"
+				dir('oss4-oms-ui') {
+            	sh '${NODE_HOME}/bin/npm install'
+            	sh "${NODE_HOME}/bin/npm run build:prod"
+				} // end dir('oss4-oms-ui')
+
+			} //end steps
+			
+			echo "编译完成"
+		} // end stage('Build')
 	}
 }
