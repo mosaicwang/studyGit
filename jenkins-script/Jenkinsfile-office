@@ -26,8 +26,9 @@ pipeline {
 
 				echo "项目位置:${env.$WORKSPACE},构建号:${env.BUILD_NUMBER},项目名称:${env.JOB_NAME}"
 				echo "编译后端"				
+    		/*
     		sh "${M2_HOME}/bin/mvn -f ${PRJ_BACKEND_DIR}/pom.xml clean package"
-    		
+    		*/
     		echo "编译前端"
     		sh "cd ${MYWORKSPACE_HOME}/${env.JOB_NAME}/${PRJ_FRONTEND_DIR}"
     		sh "${NODE_HOME}/bin/npm install"
