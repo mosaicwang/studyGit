@@ -18,14 +18,14 @@ pipeline {
 			steps{
 				echo "拉取代码"
 
-				checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]
+				// checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]
 
 
 
 				echo "项目位置:${env.$WORKSPACE},构建号:${env.BUILD_NUMBER},项目名称:${env.JOB_NAME}"
 				echo "编译后端"
 				dir('oss4-oms') {
-    			sh "${M2_HOME}/bin/mvn clean package"
+    			// sh "${M2_HOME}/bin/mvn clean package"
     		}	// end dir('oss4-oms')
 
 				echo "编译前端"
