@@ -32,7 +32,7 @@ pipeline {
     		sh "npm install"
     		sh "npm run build:prod"
     		
-    		echo "编译完成"
+    		echo "编译完成1"
 			}
 		}
 	}
