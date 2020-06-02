@@ -41,8 +41,8 @@ pipeline {
 		} // end stage('Build')
 		stage('Deploy'){
 			environment {
-				SRC_BACKEND_FILE="${env.JOB_NAME}/oss4-oms/dw-admin/target/dw-admin.jar"
-				SRC_FRONTEND_DIR="${env.JOB_NAME}/oss4-oms-ui/dist"
+				SRC_BACKEND_FILE="dw-admin/target/dw-admin.jar"
+				SRC_FRONTEND_DIR="dist"
 				DEST_DIR="/home/boco/daiwei_project"
 				PRJ_BACKEND_DIR="backend"
 				PRJ_FRONTEND_DIR="frontend"
