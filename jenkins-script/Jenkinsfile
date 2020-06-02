@@ -50,11 +50,15 @@ pipeline {
 			steps{
 				echo "开始部署"
 				
-				echo "拷贝后端JAR到${DEST_DIR}/${PRJ_BACKEND_DIR}目录"
-				sh "cp -p ${SRC_BACKEND_FILE} ${DEST_DIR}/${PRJ_BACKEND_DIR}/"
+				dir('oss4-oms') {
+					echo "拷贝后端JAR到${DEST_DIR}/${PRJ_BACKEND_DIR}目录"
+					sh "cp -p ${SRC_BACKEND_FILE} ${DEST_DIR}/${PRJ_BACKEND_DIR}/"
+				} //end dir('oss4-oms')
 				
-				echo "拷贝后端目录到${DEST_DIR}/${PRJ_FRONTEND_DIR}目录"
-				sh "cp -pr ${SRC_FRONTEND_DIR} ${DEST_DIR}/${PRJ_FRONTEND_DIR}/"
+				dir('oss4-oms-ui') {
+					echo "拷贝后端目录到${DEST_DIR}/${PRJ_FRONTEND_DIR}目录"
+					sh "cp -pr ${SRC_FRONTEND_DIR} ${DEST_DIR}/${PRJ_FRONTEND_DIR}/"
+				} //end dir('oss4-oms-ui')
 				
 				echo "部署完毕"
 			}
