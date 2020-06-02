@@ -30,9 +30,17 @@ pipeline {
     		sh "${M2_HOME}/bin/mvn -f ${PRJ_BACKEND_DIR}/pom.xml clean package"
     		*/
     		echo "编译前端"
+    		
+    		withNPM(npmrcConfig:'MyNpmrcConfig') {
+            echo "执行npm构建..."
+            sh 'npm install'
+        }
+        
+    		/*
     		sh "cd ${MYWORKSPACE_HOME}/${env.JOB_NAME}/${PRJ_FRONTEND_DIR}"
     		sh "${NODE_HOME}/bin/npm install"
     		sh "${NODE_HOME}/bin/npm run build:prod"
+    		*/
     		
     		echo "编译完成1"
 			}
