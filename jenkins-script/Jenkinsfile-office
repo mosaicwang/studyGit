@@ -28,7 +28,7 @@ pipeline {
     		sh "${M2_HOME}/bin/mvn -f ${PRJ_BACKEND_DIR}/pom.xml clean package"
     		
     		echo "编译前端"
-    		sh "cd ${MYWORKSPACE_HOME}/${PRJ_FRONTEND_DIR}"
+    		sh "cd ${MYWORKSPACE_HOME}/${env.JOB_NAME}/${PRJ_FRONTEND_DIR}"
     		sh "npm install"
     		sh "npm run build:prod"
     		
