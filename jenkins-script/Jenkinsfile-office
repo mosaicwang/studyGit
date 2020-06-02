@@ -34,6 +34,7 @@ pipeline {
     		
     		withNPM(npmrcConfig:'2ee37b08-61ea-4e0c-a840-c9b8d1d053bd') {
             echo "执行npm构建..."
+            sh "cd ${PRJ_FRONTEND_DIR}"
             sh '${NODE_HOME}/bin/npm install'
             sh "${NODE_HOME}/bin/npm run build:prod"
         }            		
