@@ -20,8 +20,9 @@ pipeline {
 			steps{
 				echo "拉取代码"
 				
+				/*
 				checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]
-				
+				*/
 
 
 				echo "项目位置:${env.$WORKSPACE},构建号:${env.BUILD_NUMBER},项目名称:${env.JOB_NAME}"
@@ -34,13 +35,8 @@ pipeline {
     		withNPM(npmrcConfig:'2ee37b08-61ea-4e0c-a840-c9b8d1d053bd') {
             echo "执行npm构建..."
             sh '${NODE_HOME}/bin/npm install'
-        }
-        
-    		/*
-    		sh "cd ${MYWORKSPACE_HOME}/${env.JOB_NAME}/${PRJ_FRONTEND_DIR}"
-    		sh "${NODE_HOME}/bin/npm install"
-    		sh "${NODE_HOME}/bin/npm run build:prod"
-    		*/
+            sh "${NODE_HOME}/bin/npm run build:prod"
+        }            		
     		
     		echo "编译完成1"
 			}
