@@ -39,5 +39,25 @@ pipeline {
 			
 			
 		} // end stage('Build')
+		stage('Deploy'){
+			environment {
+				SRC_BACKEND_FILE="${env.JOB_NAME}/oss4-oms/dw-admin/target/dw-admin.jar"
+				SRC_FRONTEND_DIR="${env.JOB_NAME}/oss4-oms-ui/dist"
+				DEST_DIR="/home/boco/daiwei_project"
+				PRJ_BACKEND_DIR="backend"
+				PRJ_FRONTEND_DIR="frontend"
+			}
+			steps{
+				echo "开始部署"
+				
+				echo "拷贝后端JAR到${DEST_DIR}/${PRJ_BACKEND_DIR}目录"
+				sh "cp -p ${SRC_BACKEND_FILE} ${DEST_DIR}/${PRJ_BACKEND_DIR}/"
+				
+				echo "拷贝后端目录到${DEST_DIR}/${PRJ_FRONTEND_DIR}目录"
+				sh "cp -pr ${SRC_FRONTEND_DIR} ${DEST_DIR}/${PRJ_FRONTEND_DIR}/"
+				
+				echo "部署完毕"
+			}
+		}
 	}
 }
