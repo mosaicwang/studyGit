@@ -34,7 +34,7 @@ pipeline {
     		
     		withNPM(npmrcConfig:'2ee37b08-61ea-4e0c-a840-c9b8d1d053bd') {
             echo "执行npm构建..."
-            dir('${PRJ_FRONTEND_DIR}') {    					
+            dir('oss4-oms-ui') {    					
             	sh '${NODE_HOME}/bin/npm install'
             	sh "${NODE_HOME}/bin/npm run build:prod"
 						}            
