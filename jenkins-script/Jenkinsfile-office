@@ -29,7 +29,7 @@ pipeline {
 				sh "cd ${MYWORKSPACE_HOME}/${env.JOB_NAME}/${PRJ_BACKEND_DIR}"
 				*/
 
-    		sh "mvn -f ${PRJ_BACKEND_DIR}/pom.xml clean package"
+    		sh "${M2_HOME}/bin/mvn -f ${PRJ_BACKEND_DIR}/pom.xml clean package"
 			}
 		}
 	}
