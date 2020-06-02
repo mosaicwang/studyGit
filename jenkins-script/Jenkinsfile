@@ -18,7 +18,7 @@ pipeline {
 			steps{
 				echo "拉取代码"
 
-				// checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]
+				checkout changelog: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'demoproj', url: 'http://39.101.173.235:9843/DW/demo-oss4-oms-vue.git']]]
 
 
 
