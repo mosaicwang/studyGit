@@ -33,10 +33,11 @@ pipeline {
             	sh '${NODE_HOME}/bin/npm install'
             	sh "${NODE_HOME}/bin/npm run build:prod"
 				} // end dir('oss4-oms-ui')
-
+				
+				echo "编译完成"
 			} //end steps
 			
-			echo "编译完成"
+			
 		} // end stage('Build')
 	}
 }
